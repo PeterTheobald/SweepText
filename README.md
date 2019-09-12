@@ -18,10 +18,9 @@ sweeptext -collect '#todo' -from "*" -exclude "* (collected).txt" -to "#todos (c
 sweeptext -collect '#errand' -headers -from "*" -exclude " (collected).txt" -to "#errands (collected).txt"
 ```
 
--refile or -move will find lines matching pattern, remove them from the source
-    file, insert them into the target file. The pattern can be a glob "\*" or a
-    regex "/^\w+/". All lines moved from a source file are inserted into the
-    target file in the same order they were found. Each line in a source file
+-refile or -move will find lines matching regex pattern, remove them from the source
+    file, insert them into the target file. All lines moved from a source file are
+    inserted into the target file in the same order they were found. Each line in a source file
     can be moved to a different target file by using a named {word} in the
     target file name, eg: -refile "#{tag}" -to "hash-{tag}.txt".
     Sets the following options: "-cleanmatch -noaddlinks -noaddheaders -insert afterblank".
@@ -32,7 +31,7 @@ sweeptext -collect '#errand' -headers -from "*" -exclude " (collected).txt" -to 
     If the target "to" file doesnt exist, do not create it,
     skip it to protect against typos.
  
--collect or -copy will find lines matching pattern, copy them to the target file.
+-collect or -copy will find lines matching regex pattern, copy them to the target file.
     The target file is wiped and recreated with each run.
     Sets the following options: "-nocleanmatch -noaddlinks -addheaders -insert overwrite".
     If the target 'to' file doesnt already exist, do not create it to protect against typos.
@@ -50,11 +49,10 @@ Sweeptext scans through text notes like those used by SimpleNote,
 NotationalVelocity, or any text editor and finds lines matching patterns and
 moves (refiles) or copies (collects) those lines to target files.
 
--refile or -move will find lines matching pattern, remove them from the source
-    file, insert them into the target file. The pattern can be a glob "*" or a
-    regex "/^\w+/". All lines moved from a source file are inserted into the
-    target file in the same order they were found. Each line in a source file
-    can be moved to a different target file by using a named {word} in the
+-refile or -move will find lines matching regex pattern, remove them from the source
+    file, insert them into the target file. All lines moved from a source file are
+    inserted into the target file in the same order they were found. Each line in a
+    source file can be moved to a different target file by using a named {word} in the
     target file name, eg: -refile "#{tag}" -to "hash-{tag}.txt"
     Sets the following options: -cleanmatch -noaddlinks -noaddheaders -insert afterblank
     A string matched in the pattern can be used as part of the filename in the
@@ -64,7 +62,7 @@ moves (refiles) or copies (collects) those lines to target files.
     If the target "to" file doesnt exist, do not create it,
     skip it to protect against typos.
 
--collect or -copy will find lines matching pattern, copy them to the target file
+-collect or -copy will find lines matching regex pattern, copy them to the target file
     The target file is wiped and recreated with each run.
     Sets the following options: -nocleanmatch -noaddlinks -addheaders -insert append
     If the target 'to' file doesnt already exist, do not create it to protect against typos
